@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+        <div class="crud">
+            <h1>
+                CRUD System
+            </h1>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn d-grid gap-2 col-6 mx-auto custom-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Add Product
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Product</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body add-modal">
+                            <label for="productName">Enter Product Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Product Name">
+                            <label for="productPrice">Enter Product Price</label>
+                            <input type="text" id="price" class="form-control" placeholder="Product Price">
+                            <label for="productType">Enter Product Type</label>
+                            <input type="text" id="type" class="form-control" placeholder="Product Type">
+                            <label for="productDesc">Enter Product Description</label>
+                            <input type="text" id="desc" class="form-control" placeholder="Product Description">
+                            <label for="productImage" class="form-label">Upload Product Image</label>
+                            <input type="file" class="form-control" id="image" accept=".jpg">
+                            <label for="productFile" class="form-label">Attach File</label>
+                            <input type="file" class="form-control" id="file" accept=".pdf,.doc,.docx,.txt,.zip">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn custom-button" onclick="addProduct()">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <input type="search" id="search" class="form-control w-50 my-3" placeholder="Search...." oninput="searchProduct()">
+                <select id="filterType" class="form-select w-25 my-3" onchange="filterByType()">
+                    <option value="">All Products</option>
+                    <option value="skincare">Skincare</option>
+                    <option value="haircare">Haircare</option>
+                    <option value="bodycare">Bodycare</option>
+                </select>
+
+                <div class="btn-group dropend">
+                    <button type="button" class="btn custom-drop dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort
+                    </button>
+                    <ul class="dropdown-menu">
+                        <!-- Dropdown menu links -->
+                        <label for="sortName"><b>Sort by Name</b></label>
+                        <li><button class="dropdown-item" type="button" onclick="sortByNameAZ()">A to Z</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="sortByNameZA()">Z to A</button></li>
+                        <label for="surtPrice"><b>Sort by Price</b></label>
+                        <li><button class="dropdown-item" type="button" onclick="sortByPriceLowHigh()">Low to High</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="sortByPriceHighLow()">High to Low</button></li>
+                    </ul>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Desc</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">File</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
